@@ -1,0 +1,6 @@
+@TetrisServer_HostAddress = http://localhost:5276
+
+GET {{TetrisServer_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
