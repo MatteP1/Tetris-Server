@@ -1,8 +1,18 @@
+using Microsoft.EntityFrameworkCore;
+using TetrisServer.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
+
+// Add Database Context
+builder.Services.AddDbContext<TetrisContext>(opt =>
+    opt.UseInMemoryDatabase("TetrisDB"));
+// builder.Services.AddDbContext<TetrisContext>(opt =>
+//     opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
