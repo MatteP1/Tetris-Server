@@ -6,12 +6,13 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
+var serverVersion = new MySqlServerVersion(new Version(8, 0, 36));
 
 // Add Database Context
-builder.Services.AddDbContext<TetrisContext>(opt =>
-    opt.UseInMemoryDatabase("TetrisDB"));
 // builder.Services.AddDbContext<TetrisContext>(opt =>
-//     opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+//     opt.UseInMemoryDatabase("TetrisDB"));
+builder.Services.AddDbContext<TetrisContext>(opt =>
+    opt.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"), serverVersion));
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
