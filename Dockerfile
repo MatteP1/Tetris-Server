@@ -6,6 +6,7 @@ WORKDIR /app
 
 # Copy csproj
 COPY *.csproj ./
+RUN dotnet restore
 
 # Copy everything else and build the API
 COPY . ./

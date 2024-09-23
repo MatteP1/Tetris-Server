@@ -13,8 +13,14 @@ spec:
         app: tetrisserver
     spec:
       containers:
-      - name: tetrisserver-container
-        image: tetrisserver-image
-        imagePullPolicy: Never
-        ports:
-        - containerPort: 8080
+        - name: tetrisserver-container
+          image: tetrisserver-image
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8080
+          env:
+            - name: ConnectionStrings__DefaultConnection
+              valueFrom:
+                secretKeyRef:
+                  name: db-connection
+                  key: secret
