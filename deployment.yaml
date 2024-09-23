@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: tetrisserver-deployment
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: tetrisserver
